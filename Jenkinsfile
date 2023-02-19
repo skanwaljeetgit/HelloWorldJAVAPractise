@@ -6,7 +6,7 @@ agent any
     
 stages
     {
-    /*stage("code checkout"){
+    stage("code checkout"){
         steps{
         bat "echo hello stage"
         }
@@ -20,9 +20,6 @@ stages
         steps{
            bat "mvn test"}
         }
-    
-
-
     stage ("Sonar Analysis")
     {
         steps{
@@ -34,7 +31,7 @@ stages
             }
         }
     }
-        stage("Upload to Artifactory"){
+     stage("Upload to Artifactory"){
             steps{
             rtMavenDeployer(id: 'deployer', 
                             serverId: '123456789@artifactory', 
@@ -45,18 +42,8 @@ stages
                           deployerId: 'deployer')
                 rtPublishBuildInfo(serverId: '123456789@artifactory')
             }
-        }*/
-        stage("Build Image"){
-            steps{
-                bat "docker build -t firstimage:${BUILD_NUMBER} ."
-            }
         }
-        stage("Docker Deployment"){
-            steps{
-                bat "docker run --name firstcontainer -d -p 9050:8080 firstimage:${BUILD_NUMBER}"
-            }
-        }
-    }
+     }
     post{
         //always{//execute all times
        //}
