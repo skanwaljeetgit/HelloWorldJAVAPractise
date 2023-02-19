@@ -35,8 +35,8 @@ stages
             steps{
             rtMavenDeployer(id: 'deployer', 
                             serverId: '123456789@artifactory', 
-                            releaseRepo: 'ksdevtestopscdflow',
-                            snapshotRepo: 'ksdevtestopscdflow')
+                            releaseRepo: 'ArtifactoryPractise',
+                            snapshotRepo: 'ArtifactoryPractise')
                 rtMavenRun(pom:'pom.xml',
                           goals: 'clean install',
                           deployerId: 'deployer')
