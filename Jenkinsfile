@@ -20,6 +20,9 @@ stages
         steps{
            bat "mvn test"}
         }
+    
+
+
     stage ("Sonar Analysis")
     {
         steps{
@@ -31,7 +34,7 @@ stages
             }
         }
     }
-    stage("Upload to Artifactory"){
+        stage("Upload to Artifactory"){
             steps{
             rtMavenDeployer(id: 'deployer', 
                             serverId: '123456789@artifactory', 
@@ -43,10 +46,8 @@ stages
                 rtPublishBuildInfo(serverId: '123456789@artifactory')
             }
         }
-     }
+    }
     post{
-        //always{//execute all times
-       //}
         success{
         bat "echo success"
         }
